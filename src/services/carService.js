@@ -1,5 +1,4 @@
 const carRepository = require('../repositories/carRepository');
-// Supondo que você criou o AppError na fase anterior
 const AppError = require('../utils/AppError'); 
 
 class CarService {
@@ -8,7 +7,7 @@ class CarService {
   }
 
   createCar(data) {
-    // Regra simples: Verificar se placa já existe (opcional, mas boa prática)
+    // Verificar se placa já existe
     const existingCars = this.repository.findAll();
     const duplicate = existingCars.find(c => c.placa === data.placa);
     

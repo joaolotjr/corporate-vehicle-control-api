@@ -1,3 +1,5 @@
+const { v4: uuidv4 } = require('uuid');
+
 class DriverRepository {
   constructor() {
     this.drivers = [];
@@ -5,7 +7,7 @@ class DriverRepository {
   }
 
   create(driver) {
-    const newDriver = { id: this.currentId++, ...driver };
+    const newDriver = { id: uuidv4(), ...driver };
     this.drivers.push(newDriver);
     return newDriver;
   }
@@ -22,11 +24,11 @@ class DriverRepository {
   }
 
   findById(id) {
-    return this.drivers.find(d => d.id === parseInt(id));
+    return this.drivers.find(d => d.id === id);
   }
 
   update(id, data) {
-    const index = this.drivers.findIndex(d => d.id === parseInt(id));
+    const index = this.drivers.findIndex(d => d.id === id);
     if (index === -1) return null;
     
     this.drivers[index] = { ...this.drivers[index], ...data };
@@ -34,7 +36,7 @@ class DriverRepository {
   }
 
   delete(id) {
-    const index = this.drivers.findIndex(d => d.id === parseInt(id));
+    const index = this.drivers.findIndex(d => d.id === id);
     if (index === -1) return false;
     
     this.drivers.splice(index, 1);

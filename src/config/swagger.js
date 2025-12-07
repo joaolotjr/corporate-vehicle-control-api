@@ -6,7 +6,7 @@ const options = {
     info: {
       title: 'API de Controle de Automóveis',
       version: '1.0.0',
-      description: 'API para gerenciamento de frota e utilização de veículos [cite: 5]',
+      description: 'API para gerenciamento de frota e utilização de veículos',
     },
     servers: [
       {

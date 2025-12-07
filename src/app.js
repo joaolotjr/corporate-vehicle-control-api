@@ -7,6 +7,7 @@ const errorHandler = require('./middlewares/errorHandler');
 // Importar Rotas
 const carRoutes = require('./routes/carRoutes');
 const driverRoutes = require('./routes/driverRoutes');
+const usageRoutes = require('./routes/usageRoutes');
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpecs));
 // Rotas da API
 app.use('/api/automoveis', carRoutes);
 app.use('/api/motoristas', driverRoutes);
+app.use('/api/utilizacao', usageRoutes);
 
 // Rota padrão para 404
 app.all(/(.*)/, (req, res, next) => {
@@ -29,7 +31,7 @@ app.all(/(.*)/, (req, res, next) => {
   });
 });
 
-// Middleware Global de Erros (Sempre o último)
+// Middleware Global de Erros
 app.use(errorHandler);
 
 module.exports = app;

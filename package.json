@@ -4,7 +4,8 @@
   "description": "Back-end solution for managing corporate transportation assets. This API acts as a central control unit for fleet operations, ensuring optimal resource allocation and preventing scheduling conflicts.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/server.js",
+    "test": "jest --verbose"
   },
   "repository": {
     "type": "git",

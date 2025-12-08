@@ -1,7 +1,9 @@
 # 🚗 Corporate Vehicle Control API
 
-Solução Back-end para o desafio técnico da **Seidor / 4tax**.
+Solução Back-end para o desafio técnico da **Seidor**.
 Esta API atua como uma unidade de controle central para operações de frota, garantindo a alocação ideal de recursos e prevenindo conflitos de agendamento através de regras de negócio estritas.
+
+---
 
 ## 🎯 Funcionalidades Principais
 
@@ -64,6 +66,9 @@ Para rodar os testes:
 ```bash
 npm test
 ```
+
+---
+
 ##  📊 Cobertura de Testes (Coverage)
 
 Abaixo o relatório de cobertura gerado automaticamente, destacando a alta cobertura nas regras de negócio (services):
@@ -80,6 +85,8 @@ All files             |   37.61 |    26.66 |   16.66 |   43.61 |
 Test Suites: 1 passed, 1 total
 Tests:       7 passed, 7 total
 
+---
+
 ## 📂 Estrutura do Projeto
 
 ```
@@ -87,7 +94,6 @@ Tests:       7 passed, 7 total
   /config         # Configurações (Swagger, Env)
   /controllers    # Camada de Interface (HTTP, Validação de entrada)
   /middlewares    # Tratamento de Erros Global
-  /models         # Definições de entidades (se necessário)
   /repositories   # Camada de Acesso a Dados (In-Memory DB)
   /routes         # Definição de Rotas da API
   /services       # Regras de Negócio e Lógica de Domínio
@@ -98,6 +104,27 @@ Tests:       7 passed, 7 total
 
 ```
 
+---
+
+## 🔌 Principais Endpoints 
+
+| Recurso     | Método | Rota                     | Descrição                                  |
+| :---        | :---   | :---                     | :---                                       |
+| **Automóveis** | `POST` | `/api/automoveis`        | Cria um novo veículo                       |
+|             | `GET`  | `/api/automoveis`        | Lista veículos (Filtros: `cor`, `marca`)   |
+|             | `GET`  | `/api/automoveis/{id}`   | Recupera um veículo pelo ID                |
+|             | `PUT`  | `/api/automoveis/{id}`   | Atualiza os dados de um veículo            |
+|             | `DELETE`| `/api/automoveis/{id}`  | Remove um veículo do sistema               |
+| **Motoristas** | `POST` | `/api/motoristas`        | Cria um novo motorista                     |
+|             | `GET`  | `/api/motoristas`        | Lista motoristas (Filtro: `nome`)          |
+|             | `GET`  | `/api/motoristas/{id}`   | Recupera um motorista pelo ID              |
+|             | `PUT`  | `/api/motoristas/{id}`   | Atualiza os dados de um motorista          |
+|             | `DELETE`| `/api/motoristas/{id}`  | Remove um motorista do sistema             |
+| **Utilização** | `POST` | `/api/utilizacao`        | **Inicia** o uso (Motorista + Carro)       |
+|             | `GET`  | `/api/utilizacao`        | Lista o histórico completo de utilizações  |
+|             | `PUT`  | `/api/utilizacao/{id}/finalizar` | **Finaliza** o uso atual (Devolução)       |
+---
+
 ## 🔮 Melhorias Futuras (Roadmap)
 
 Visando a evolução do projeto para um ambiente de produção real, os seguintes pontos seriam abordados:
@@ -106,3 +133,13 @@ Visando a evolução do projeto para um ambiente de produção real, os seguinte
 * **Containerização:** Criação de `Dockerfile` e `docker-compose.yml` para facilitar o deploy.
 * **Autenticação:** Implementação de JWT (JSON Web Tokens) para proteger as rotas de escrita.
 * **CI/CD:** Pipeline no GitHub Actions para rodar os testes automaticamente a cada Push.
+
+---
+
+## 👨‍💻 Autor
+
+Desenvolvido por **João Carlos Lot Junior**.
+
+* **LinkedIn:** [https://www.linkedin.com/in/joao-carlos-lot-junior/]
+* **GitHub:** [https://github.com/joaolotjr]
+

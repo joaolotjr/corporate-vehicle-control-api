@@ -5,8 +5,8 @@ const usageController = require('../controllers/usageController');
 /**
  * @swagger
  * tags:
- *   name: Utilização
- *   description: Controle de uso dos veículos
+ *   - name: Utilização
+ *     description: Controle de uso dos veículos
  */
 
 /**
@@ -21,24 +21,23 @@ const usageController = require('../controllers/usageController');
  *         application/json:
  *           schema:
  *             type: object
- *             required:
- * 
- *               - automovelId
- *               - motoristaId *               
- *               - motivo
+ *             required: [automovelId, motoristaId, motivo]
  *             properties:
- *               
  *               automovelId:
  *                 type: string
+ *                 description: UUID do automóvel
  *               motoristaId:
  *                 type: string
+ *                 description: UUID do motorista
  *               motivo:
  *                 type: string
  *     responses:
  *       201:
- *         description: Utilização iniciada
+ *         description: Utilização iniciada com sucesso
  *       409:
- *         description: Automóvel já está em uso
+ *         description: Automóvel ou Motorista já em uso
+ *       404:
+ *         description: Automóvel ou Motorista não encontrado
  */
 router.post('/', usageController.create);
 
@@ -50,7 +49,7 @@ router.post('/', usageController.create);
  *     tags: [Utilização]
  *     responses:
  *       200:
- *         description: Histórico retornado
+ *         description: Histórico retornado com sucesso
  */
 router.get('/', usageController.list);
 
@@ -66,9 +65,14 @@ router.get('/', usageController.list);
  *         required: true
  *         schema:
  *           type: string
+ *         description: ID do registro de utilização
  *     responses:
  *       200:
  *         description: Utilização finalizada com sucesso
+ *       400:
+ *         description: Utilização já finalizada anteriormente
+ *       404:
+ *         description: Registro de utilização não encontrado
  */
 router.put('/:id/finalizar', usageController.finish);
 

@@ -1,5 +1,11 @@
-# compiled output
+# Node.js dependencies
 /node_modules
 
-# test output
+# Environment variables
+.env
+
+# Test coverage outputs
 /coverage
+
+#OS generated files (macOS)
+.DS_Store

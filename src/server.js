@@ -1,10 +1,14 @@
+require('dotenv').config();
+
 const app = require('./app');
 const runSeed = require('./utils/seed');
 
 const PORT = process.env.PORT || 3000;
 
-// Popula dados iniciais
-runSeed();
+// Popula dados iniciais se nao for um teste
+if (process.env.NODE_ENV !== 'test') {
+  runSeed();
+}
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

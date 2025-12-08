@@ -26,7 +26,7 @@ app.use('/api/utilizacao', usageRoutes);
 // Rota padrão para 404
 app.all(/(.*)/, (req, res, next) => {
   res.status(404).json({
-    status: 'fail',
+    status: '404',
     message: `Rota ${req.originalUrl} não encontrada neste servidor.`
   });
 });
